@@ -1,0 +1,56 @@
+<div class="smart-widget widget-dark-blue">
+	<div class="smart-widget-header">{{ 'restaurant.manage' | translate }}</div>
+	<div class="smart-widget-inner">
+		
+		
+		<div style="padding: 20px;">
+			<div class="panel">
+				<div class="panel-body">
+					<div style="float:right; margin-top: 7px;">
+						<a href="javascript:" ng-click="isConditionCollapsed = !isConditionCollapsed" class="widget-remove-option"><i class="fa fa-times"></i></a>
+					</div>
+					<div>
+					<form class="form-inline no-margin" novalidate>
+						<div class="form-group">
+								<input ng-model="condition.name" type="text" class="form-control input-sm" placeholder="{{ 'restaurant.name' | translate }}">&nbsp;&nbsp;
+						</div>
+						<button ng-click="query(condition)" class="btn btn-sm btn-success"><i class="fa fa-search m-right-xs"></i>{{ 'common.query' | translate }}</button>
+						<button ng-click="cleanCondition()" class="btn btn-sm btn-warning"><i class="ion-close m-right-xs"></i>{{ 'common.clean' | translate }}</button>
+					</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show="pageInfo.totalElements > 0">
+			<div class="smart-widget-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th width="50">{{ 'common.index' | translate }}</th>
+							<th>{{ 'restaurant.name' | translate }}</th>
+							<th width="100">{{ 'restaurant.users' | translate }}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat = "restaurant in restaurants">
+							<td>{{restaurant.id}}</td>
+							<td>{{restaurant.name}}</td>
+							<td>{{restaurant.count}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="margin-top: -30px; margin-left: 20px; margin-bottom: 20px;">
+				<uib-pagination total-items="pageInfo.totalElements" num-pages="pageInfo.totalPages" ng-model="pageInfo.page" max-size="pageInfo.maxSize" 
+					class="pagination-sm" boundary-links="true" force-ellipses="true" ng-change="changePage()" ng-disabled="pageInfo.totalElements <= 0" 
+					first-text="{{ 'common.page.first' | translate }}" last-text="{{ 'common.page.last' | translate }}" next-text="{{ 'common.page.next' | translate }}" previous-text="{{ 'common.page.previous' | translate }}"></uib-pagination>
+			</div>
+		</div>
+		<div class="smart-widget-body" ng-hide="pageInfo.totalElements > 0">
+			<div class="alert alert-warning alert-dismissible" role="alert">
+		     	<i class="fa fa-exclamation-circle m-right-xs"></i> <strong>{{ 'common.search.not.result' | translate }}</strong>
+		    </div>
+		</div>
+	</div>
+</div>

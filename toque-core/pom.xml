@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.proginn.toque</groupId>
+		<artifactId>toque</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../toque</relativePath>
+	</parent>
+	<artifactId>toque-core</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.proginn.toque</groupId>
+			<artifactId>toque-framework</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-mail</artifactId>
+	    </dependency>
+	    <dependency>
+		  <groupId>com.twilio.sdk</groupId>
+		  <artifactId>twilio</artifactId>
+		  <version>7.17.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.lowagie</groupId>
+		    <artifactId>itext</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.lowagie</groupId>
+		    <artifactId>itext-rtf</artifactId>
+		    <version>2.1.7</version>
+		</dependency>
+				
+		
+	</dependencies>
+</project>

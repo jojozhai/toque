@@ -1,0 +1,52 @@
+<div class="smart-widget widget-dark-blue">
+	<div class="smart-widget-header">{{ 'feedback.manage' | translate }}</div>
+	<div class="smart-widget-inner">
+		
+		
+		<div ng-show="pageInfo.totalElements > 0">
+			<div class="smart-widget-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th width="100">{{ 'feedback.username' | translate }}</th>
+							<th width="150">{{ 'feedback.createdTime' | translate }}</th>
+							<th>{{ 'feedback.content' | translate }}</th>
+							<th width="100">{{ 'feedback.status' | translate }}</th>
+							<th width="150">{{ 'common.operation' | translate }}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat = "feedback in feedbacks">
+							<td>{{feedback.username}}</td>
+							<td>{{feedback.createdTime | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+							<td>{{feedback.content}}</td>
+							<td>{{feedback.status | feedbackStatus | translate}}</td>
+							<td>
+								<div ng-show="feedback.status + '' == 'replyed'">
+									<button class="btn btn-success btn-xs" ng-click="update(feedback)">
+										<i class="fa fa-bars m-right-xs"></i>{{ 'common.view' | translate }}
+									</button>
+								</div>
+								<div ng-show="feedback.status + '' == 'waiting'">
+									<button class="btn btn-success btn-xs" ng-click="update(feedback)">
+										<i class="fa fa-reply m-right-xs"></i>{{ 'common.reply' | translate }}
+									</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="margin-top: -30px; margin-left: 20px; margin-bottom: 20px;">
+				<uib-pagination total-items="pageInfo.totalElements" num-pages="pageInfo.totalPages" ng-model="pageInfo.page" max-size="pageInfo.maxSize" 
+					class="pagination-sm" boundary-links="true" force-ellipses="true" ng-change="changePage()" ng-disabled="pageInfo.totalElements <= 0" 
+					first-text="{{ 'common.page.first' | translate }}" last-text="{{ 'common.page.last' | translate }}" next-text="{{ 'common.page.next' | translate }}" previous-text="{{ 'common.page.previous' | translate }}"></uib-pagination>
+			</div>
+		</div>
+		<div class="smart-widget-body" ng-hide="pageInfo.totalElements > 0">
+			<div class="alert alert-warning alert-dismissible" role="alert">
+		     	<i class="fa fa-exclamation-circle m-right-xs"></i> <strong>{{ 'common.search.not.result' | translate }}</strong>
+		    </div>
+		</div>
+	</div>
+</div>

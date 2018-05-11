@@ -1,0 +1,26 @@
+<div class="smart-widget widget-dark-blue margin-md">
+	<div class="smart-widget-header">{{ 'feedback.form.title' | translate }}</div>
+	<div class="smart-widget-inner">
+	<div class="smart-widget-body" >
+		<form name="feedbackForm" class="form-horizontal no-margin" id="type-constraint" data-validate="parsley" novalidate>
+			<div class="form-group"  ng-class="feedbackForm.content.$invalid && feedbackForm.content.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'feedback.content' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea disabled="disabled" name="content" ng-model="feedback.content" class="form-control input-sm" rows="5" cols="30" ></textarea>
+				</div>
+			</div>
+			<div class="form-group"  ng-class="feedbackForm.reply.$invalid && feedbackForm.reply.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'feedback.reply' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea ng-disabled="feedback.status == 'replyed'" name="reply" ng-model="feedback.reply" class="form-control input-sm" rows="5" cols="30" required="required"></textarea>
+					<label class="control-label" ng-show="feedbackForm.reply.$invalid && feedbackForm.reply.$dirty">{{ 'feedback.reply.error' | translate }}</label>
+				</div>
+			</div>
+			
+			<div class="text-right m-top-md" ng-hide="feedback.status == 'replyed'">
+				<button ng-click="save(feedback)" class="btn btn-success btn-sm" ng-disabled="feedbackForm.$invalid"><i class="fa fa-save m-right-xs"></i>{{ 'common.save' | translate }}</button>
+			</div>
+		</form>
+	</div>
+	</div>
+</div>

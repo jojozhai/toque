@@ -1,0 +1,83 @@
+<div class="smart-widget widget-dark-blue margin-md">
+	<div class="smart-widget-header">{{ 'template.form.title' | translate }}</div>
+	<div class="smart-widget-inner">
+	<div class="smart-widget-body" >
+		<form name="templateForm" class="form-horizontal no-margin" id="type-constraint" data-validate="parsley" novalidate>
+			<div class="form-group"  ng-class="templateForm.contentChinese.$invalid && templateForm.contentChinese.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.content.chinese' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea ng-disabled="template.id" name="contentChinese" ng-model="template.contentChinese" class="form-control input-sm" rows="5" cols="30" required="required"></textarea>
+					<label class="control-label" ng-show="templateForm.contentChinese.$invalid && templateForm.contentChinese.$dirty">{{ 'template.content.chinese.error' | translate }}</label>
+				</div>
+			</div>
+			<div class="form-group"  ng-class="templateForm.contentEnglish.$invalid && templateForm.contentEnglish.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.content.english' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea ng-disabled="template.id" name="contentEnglish" ng-model="template.contentEnglish" class="form-control input-sm" rows="5" cols="30" required="required"></textarea>
+					<label class="control-label" ng-show="templateForm.contentEnglish.$invalid && templateForm.contentEnglish.$dirty">{{ 'template.content.english.error' | translate }}</label>
+				</div>
+			</div>
+			
+			<div class="form-group" ng-class="templateForm.scope.$invalid && templateForm.scope.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.scope' | translate }}:</label>
+				<div class="col-lg-3">
+					<div>
+						<select ng-disabled="template.id" name="scope" ng-model="template.scope" ng-options="scope.value as scope.name for scope in scopes" class="form-control input-sm" required>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group" ng-class="templateForm.immediately.$invalid && templateForm.immediately.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.immediately' | translate }}:</label>
+				<div class="col-lg-3">
+					<div>
+						<select ng-disabled="template.id" name="immediately" ng-model="template.immediately" ng-options="immediately.value as immediately.name for immediately in immediatelys" class="form-control input-sm" required>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div ng-show="template.immediately + '' == 'false'" class="form-group" ng-class="templateForm.planSendTime.$invalid && templateForm.planSendTime.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3" style="padding-top: 40px;">{{ 'template.planSendTime' | translate }}:</label>
+				<div class="col-md-3">
+					<p class="input-group" style="margin-bottom: 0px; padding-top: 35px;">
+						<input type="text" ng-disabled="template.id" uib-datepicker-popup name="planSendTime" ng-model="template.planSendTime" class="form-control input-sm" is-open="popup1.opened"
+							datepicker-options="dateOptions" placeholder="{{ 'template.planSendTime' | translate }}" 
+							clear-text="{{ 'common.date.clear' | translate }}" 
+							close-text="{{ 'common.date.close' | translate }}" 
+							current-text="{{ 'common.date.current' | translate }}" on-open-focus="false"/>
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default input-sm" ng-click="open1()">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+				<div class="col-md-3">
+					<uib-timepicker ng-disabled="template.id"  class="input-sm" ng-model="template.planSendTime" hour-step="1" minute-step="1" show-meridian="false"></uib-timepicker>
+				</div>
+				
+			</div>
+			
+			<div class="form-group"  ng-class="templateForm.link.$invalid && templateForm.link.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.link' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="link" ng-disabled="template.id" ng-model="template.link" type="text" class="form-control input-sm" placeholder="{{ 'template.link.placeholder' | translate }}">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="templateForm.sendSmsAndEmail.$invalid && templateForm.sendSmsAndEmail.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.sendSmsAndEmail' | translate }}:</label>
+				<div class="col-lg-3">
+					<input name="sendSmsAndEmail" ng-disabled="template.id" ng-model="template.sendSmsAndEmail" type="checkbox" class=" input-sm">
+				</div>
+			</div>
+			
+			<div class="text-right m-top-md" ng-hide="template.id">
+				<button ng-click="save(template)" class="btn btn-success btn-sm" ng-disabled="templateForm.$invalid"><i class="fa fa-save m-right-xs"></i>{{ 'common.save' | translate }}</button>
+			</div>
+		</form>
+	</div>
+	</div>
+</div>

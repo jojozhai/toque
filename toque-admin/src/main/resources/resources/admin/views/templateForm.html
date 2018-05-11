@@ -1,0 +1,120 @@
+<div class="smart-widget widget-dark-blue margin-md">
+	<div class="smart-widget-header">{{ 'template.form.title' | translate }}</div>
+	<div class="smart-widget-inner">
+	<div class="smart-widget-body" >
+		<form name="templateForm" class="form-horizontal no-margin" id="type-constraint" data-validate="parsley" novalidate>
+			<div class="form-group"  ng-class="templateForm.letterContent.$invalid && templateForm.letterContent.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.content.chinese' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea ng-disabled="template.id" name="letterContent" ng-model="template.letterContent" class="form-control input-sm" rows="5" cols="30" required="required"></textarea>
+					<label class="control-label" ng-show="templateForm.letterContent.$invalid && templateForm.letterContent.$dirty">{{ 'template.content.chinese.error' | translate }}</label>
+				</div>
+			</div>
+			<div class="form-group"  ng-class="templateForm.letterContentE.$invalid && templateForm.letterContentE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.content.english' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea ng-disabled="template.id" name="letterContentE" ng-model="template.letterContentE" class="form-control input-sm" rows="5" cols="30" required="required"></textarea>
+					<label class="control-label" ng-show="templateForm.letterContentE.$invalid && templateForm.letterContentE.$dirty">{{ 'template.content.english.error' | translate }}</label>
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="templateForm.smsContent.$invalid && templateForm.smsContent.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.content.sms.chinese' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea ng-disabled="template.id" name="smsContent" ng-model="template.smsContent" class="form-control input-sm" rows="5" cols="30" required="required"></textarea>
+					<label class="control-label" ng-show="templateForm.smsContent.$invalid && templateForm.smsContent.$dirty">{{ 'template.content.chinese.error' | translate }}</label>
+				</div>
+			</div>
+			<div class="form-group"  ng-class="templateForm.smsContentE.$invalid && templateForm.smsContentE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.content.sms.english' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea ng-disabled="template.id" name="smsContentE" ng-model="template.smsContentE" class="form-control input-sm" rows="5" cols="30" required="required"></textarea>
+					<label class="control-label" ng-show="templateForm.smsContentE.$invalid && templateForm.smsContentE.$dirty">{{ 'template.content.english.error' | translate }}</label>
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="templateForm.emailContent.$invalid && templateForm.emailContent.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.content.email.chinese' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea ng-disabled="template.id" name="emailContent" ng-model="template.emailContent" class="form-control input-sm" rows="5" cols="30" required="required"></textarea>
+					<label class="control-label" ng-show="templateForm.emailContent.$invalid && templateForm.emailContent.$dirty">{{ 'template.content.chinese.error' | translate }}</label>
+				</div>
+			</div>
+			<div class="form-group"  ng-class="templateForm.emailContentE.$invalid && templateForm.emailContentE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.content.email.english' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea ng-disabled="template.id" name="emailContentE" ng-model="template.emailContentE" class="form-control input-sm" rows="5" cols="30" required="required"></textarea>
+					<label class="control-label" ng-show="templateForm.emailContentE.$invalid && templateForm.emailContentE.$dirty">{{ 'template.content.english.error' | translate }}</label>
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="templateForm.emailTitle.$invalid && templateForm.emailTitle.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.email.title.chinese' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="emailTitle" ng-disabled="template.id" ng-model="template.emailTitle" type="text" class="form-control input-sm" >
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="templateForm.emailTitleE.$invalid && templateForm.emailTitleE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.email.title.english' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="emailTitleE" ng-disabled="template.id" ng-model="template.emailTitleE" type="text" class="form-control input-sm" >
+				</div>
+			</div>
+			
+			<div class="form-group" ng-class="templateForm.scope.$invalid && templateForm.scope.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.scope' | translate }}:</label>
+				<div class="col-lg-3">
+					<div>
+						<select ng-disabled="template.id" name="scope" ng-model="template.scope" ng-options="scope.value as scope.name for scope in scopes" class="form-control input-sm" required>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group" ng-class="templateForm.immediately.$invalid && templateForm.immediately.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.immediately' | translate }}:</label>
+				<div class="col-lg-3">
+					<div>
+						<select ng-disabled="template.id" name="immediately" ng-model="template.immediately" ng-options="immediately.value as immediately.name for immediately in immediatelys" class="form-control input-sm" required>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div ng-show="template.immediately + '' == 'false'" class="form-group" ng-class="templateForm.planSendTime.$invalid && templateForm.planSendTime.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3" style="padding-top: 40px;">{{ 'template.planSendTime' | translate }}:</label>
+				<div class="col-md-3">
+					<p class="input-group" style="margin-bottom: 0px; padding-top: 35px;">
+						<input type="text" ng-disabled="template.id" uib-datepicker-popup name="planSendTime" ng-model="template.planSendTime" class="form-control input-sm" is-open="popup1.opened"
+							datepicker-options="dateOptions" placeholder="{{ 'template.planSendTime' | translate }}" 
+							clear-text="{{ 'common.date.clear' | translate }}" 
+							close-text="{{ 'common.date.close' | translate }}" 
+							current-text="{{ 'common.date.current' | translate }}" on-open-focus="false"/>
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default input-sm" ng-click="open1()">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+				<div class="col-md-3">
+					<uib-timepicker ng-disabled="template.id"  class="input-sm" ng-model="template.planSendTime" hour-step="1" minute-step="1" show-meridian="false"></uib-timepicker>
+				</div>
+				
+			</div>
+			
+			<div class="form-group"  ng-class="templateForm.sendSmsAndEmail.$invalid && templateForm.sendSmsAndEmail.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'template.sendSmsAndEmail' | translate }}:</label>
+				<div class="col-lg-3">
+					<input name="sendSmsAndEmail" ng-disabled="template.id" ng-model="template.sendSmsAndEmail" type="checkbox" class=" input-sm">
+				</div>
+			</div>
+			
+			<div class="text-right m-top-md" ng-hide="template.id">
+				<button ng-click="save(template)" class="btn btn-success btn-sm" ng-disabled="templateForm.$invalid"><i class="fa fa-save m-right-xs"></i>{{ 'common.save' | translate }}</button>
+			</div>
+		</form>
+	</div>
+	</div>
+</div>

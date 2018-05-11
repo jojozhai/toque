@@ -20,3 +20,14 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+toque/.project
+toque/.settings/
+*.classpath
+*.factorypath
+*.project
+toque-admin/.settings/
+toque-admin/target/
+toque-core/.settings/
+toque-core/target/
+toque-framework/.settings/
+toque-framework/target/

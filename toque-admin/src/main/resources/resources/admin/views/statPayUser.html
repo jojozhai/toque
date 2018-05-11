@@ -1,0 +1,68 @@
+<div class="smart-widget widget-dark-blue">
+	<div class="smart-widget-header">{{ 'statistics.user.pay' |
+		translate }}</div>
+	<div class="smart-widget-inner">
+		<div style="padding: 20px;">
+
+			<div>
+				<form class="form-inline no-margin" novalidate>
+					<div class="row">
+						<div class="col-md-12">
+							<p class="input-group"
+								style="margin-bottom: 0px;">
+								<input type="text" 
+									uib-datepicker-popup name="startTime"
+									ng-model="condition.startTime" class="form-control input-sm"
+									is-open="popup1.opened" datepicker-options="dateOptions"
+									placeholder="{{ 'common.startTime' | translate }}"
+									clear-text="{{ 'common.date.clear' | translate }}"
+									close-text="{{ 'common.date.close' | translate }}"
+									current-text="{{ 'common.date.current' | translate }}"
+									on-open-focus="false" /> 
+								<span class="input-group-btn" style="padding-right: 10px;">
+									<button type="button" class="btn btn-default input-sm"
+										ng-click="open1()">
+										<i class="glyphicon glyphicon-calendar"></i>
+									</button>
+								</span>
+								<input type="text" 
+									uib-datepicker-popup name="endTime"
+									ng-model="condition.endTime" class="form-control input-sm"
+									is-open="popup2.opened" datepicker-options="dateOptions"
+									placeholder="{{ 'common.endTime' | translate }}"
+									clear-text="{{ 'common.date.clear' | translate }}"
+									close-text="{{ 'common.date.close' | translate }}"
+									current-text="{{ 'common.date.current' | translate }}"
+									on-open-focus="false" /> 
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default input-sm"
+										ng-click="open2()">
+										<i class="glyphicon glyphicon-calendar"></i>
+									</button>
+								</span>
+							</p>
+							<button ng-click="query(condition)"
+								class="btn btn-sm btn-success">
+								<i class="fa fa-search m-right-xs"></i>{{ 'common.query' |
+								translate }}
+							</button>
+							<button ng-click="cleanCondition()"
+								class="btn btn-sm btn-warning">
+								<i class="ion-close m-right-xs"></i>{{ 'common.clean' |
+								translate }}
+							</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-11" style="margin-left: 40px; ">
+				<canvas id="line" height="100" class="chart chart-line"
+					chart-data="stat.chart.data" chart-labels="stat.chart.labels" chart-series="stat.chart.series"></canvas>
+			</div>
+		</div>
+	</div>
+</div>

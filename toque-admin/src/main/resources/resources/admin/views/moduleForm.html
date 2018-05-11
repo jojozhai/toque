@@ -1,0 +1,92 @@
+<div class="smart-widget widget-dark-blue margin-md">
+	<div class="smart-widget-header">{{ 'module.form.title' | translate }}</div>
+	<div class="smart-widget-inner">
+	<div class="smart-widget-body" >
+		<form name="moduleForm" class="form-horizontal no-margin" id="type-constraint" data-validate="parsley" novalidate>
+			
+			<div class="form-group" ng-class="moduleForm.categoryId.$invalid && moduleForm.categoryId.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'module.categoryId' | translate }}:</label>
+				<div class="col-lg-3">
+					<div>
+						<select name="categoryId" ng-model="module.categoryId" class="form-control input-sm" ng-options="category.value as category.name for category in categorys" required></select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="moduleForm.title.$invalid && moduleForm.title.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'module.title' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="title" maxlength="50" ng-model="module.title" type="text" class="form-control input-sm" placeholder="{{ 'module.title' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="moduleForm.tag.$invalid && moduleForm.tag.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'module.tag' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="tag" maxlength="50" ng-model="module.tag" type="text" class="form-control input-sm" placeholder="{{ 'module.tag' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="moduleForm.cover.$invalid && moduleForm.cover.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'module.cover' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="cover" maxlength="100" ng-model="module.cover" type="text" class="form-control input-sm" placeholder="{{ 'module.cover' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="moduleForm.desc.$invalid && moduleForm.desc.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'module.desc' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea name="desc" maxlength="200" ng-model="module.desc" class="form-control input-sm" rows="5" cols="30" required="required"></textarea>
+				</div>
+			</div>
+			
+			
+			<div class="form-group"  ng-class="moduleForm.titleE.$invalid && moduleForm.titleE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'module.titleE' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="titleE" maxlength="50" ng-model="module.titleE" type="text" class="form-control input-sm" placeholder="{{ 'module.titleE' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="moduleForm.tagE.$invalid && moduleForm.tagE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'module.tagE' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="tagE" maxlength="50" ng-model="module.tagE" type="text" class="form-control input-sm" placeholder="{{ 'module.tagE' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="moduleForm.coverE.$invalid && moduleForm.coverE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'module.coverE' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="coverE" maxlength="100" ng-model="module.coverE" type="text" class="form-control input-sm" placeholder="{{ 'module.coverE' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="moduleForm.descE.$invalid && moduleForm.descE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'module.descE' | translate }}:</label>
+				<div class="col-lg-9">
+					<textarea name="descE" maxlength="200" ng-model="module.descE" class="form-control input-sm" rows="5" cols="30" required="required"></textarea>
+				</div>
+			</div>
+			
+			<div class="form-group" ng-class="moduleForm.type.$invalid && moduleForm.type.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'module.type' | translate }}:</label>
+				<div class="col-lg-3">
+					<div>
+						<select name="type" ng-model="module.type" class="form-control input-sm" required>
+							<option value="FREE">{{ 'module.type.free' | translate }}</option>
+							<option value="PAY">{{ 'module.type.pay' | translate }}</option>
+							<option value="HOT">{{ 'module.type.hot' | translate }}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="text-right m-top-md">
+				<button ng-click="save(module)" class="btn btn-success btn-sm" ng-disabled="moduleForm.$invalid"><i class="fa fa-save m-right-xs"></i>{{ 'common.save' | translate }}</button>
+			</div>
+		</form>
+	</div>
+	</div>
+</div>

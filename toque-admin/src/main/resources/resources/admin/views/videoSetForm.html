@@ -1,0 +1,163 @@
+<div class="smart-widget widget-dark-blue margin-md">
+	<div class="smart-widget-header">{{ 'videoSet.form.title' | translate }}</div>
+	<div class="smart-widget-inner">
+	<div class="smart-widget-body" >
+		<form name="videoSetForm" class="form-horizontal no-margin" id="type-constraint" data-validate="parsley" novalidate>
+			
+			<!-- 视频名称 -->
+			<div class="form-group"  ng-class="videoSetForm.name.$invalid && videoSetForm.name.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'videoSet.name' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="name" ng-model="videoSet.name" type="text" class="form-control input-sm" placeholder="{{ 'videoSet.name' | translate }}" required>
+				</div>
+			</div>
+			
+			<!-- 模板设置 -->
+			<div class="form-group" ng-show="!videoSet.startWithImage" ng-class="videoSetForm.rightCount.$invalid && videoSetForm.rightCount.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'videoSet.interaction' | translate }}</label>
+				<div class="col-lg-3">
+					<select name="rightCount" ng-model="videoSet.rightCount" class="form-control input-sm">
+						<option value="">{{ 'videoSet.rightCount' | translate }}</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+				</div>
+				<div class="col-lg-3">
+					<select name="multiCount" ng-model="videoSet.multiCount" class="form-control input-sm">
+						<option value="">{{ 'videoSet.multiCount' | translate }}</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+				</div>
+				<div class="col-lg-3">
+					<button ng-click="createTemplate()" class="btn btn-info btn-sm">
+						<i class="ion-plus m-right-xs"></i>{{ 'videoSet.interaction.create' | translate }}
+					</button>
+				</div>
+			</div>
+			
+			<div class="panel" ng-repeat = "videoGroup in videoSet.groups">
+				
+				<!-- 主视频 -->
+				<div class="panel-body"  ng-show="videoGroup.type == 'MAIN'">
+					<div class="form-group" style="margin-bottom: 0px;"  ng-class="videoSetForm.name.$invalid && videoSetForm.name.$dirty ? 'has-error': ''">
+						<label class="control-label col-lg-3">0:{{ 'videoSet.video.main' | translate }}:</label>
+						<div class="col-lg-6">
+							<input name="name" ng-model="videoGroup.videos[0].url" type="text" class="form-control input-sm" placeholder="{{ 'videoSet.video.url' | translate }}" >
+						</div>
+						<div class="col-lg-3">
+							<select name="next" ng-model="videoGroup.videos[0].nextSort" class="form-control input-sm">
+								<option value="">{{ 'videoSet.interaction.select' | translate }}</option>
+								<option value="1">1{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="2">2{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="3">3{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="4">4{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="5">5{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="6">6{{ 'videoSet.videoGroup' | translate }}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 对错视频 -->
+				<div class="panel-body" ng-show="videoGroup.type == 'JUDGE'">
+					<div class="form-group" ng-class="videoSetForm.name.$invalid && videoSetForm.name.$dirty ? 'has-error': ''">
+						<label class="control-label col-lg-3">{{$index}}:{{ 'videoSet.videoGroup' | translate }}:</label>
+						<div class="col-lg-6">
+							<input name="name" ng-model="videoGroup.image" type="text" class="form-control input-sm" placeholder="{{ 'videoSet.interaction.image' | translate }}" >
+						</div>
+						<div class="col-lg-3">
+							<select name="next" ng-model="videoGroup.rightOption" class="form-control input-sm">
+								<option value="A">A{{ 'videoSet.videoGroup.right' | translate }}</option>
+								<option value="B">B{{ 'videoSet.videoGroup.right' | translate }}</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group" ng-class="videoSetForm.name.$invalid && videoSetForm.name.$dirty ? 'has-error': ''">
+						<label class="control-label col-lg-3">{{ 'videoSet.video.sub' | translate }}(A)</label>
+						<div class="col-lg-6">
+							<input name="name" ng-model="videoGroup.videos[0].url" type="text" class="form-control input-sm" placeholder="{{ 'videoSet.video.url' | translate }}" >
+						</div>
+						<div class="col-lg-3" ng-show="videoGroup.rightOption == 'A'">
+							<select name="next" ng-model="videoGroup.videos[0].nextSort" class="form-control input-sm">
+								<option value="">{{ 'videoSet.interaction.select' | translate }}</option>
+								<option value="1">1{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="2">2{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="3">3{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="4">4{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="5">5{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="6">6{{ 'videoSet.videoGroup' | translate }}</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group" ng-class="videoSetForm.name.$invalid && videoSetForm.name.$dirty ? 'has-error': ''">
+						<label class="control-label col-lg-3">{{ 'videoSet.video.sub' | translate }}(B)</label>
+						<div class="col-lg-6">
+							<input name="name" ng-model="videoGroup.videos[1].url" type="text" class="form-control input-sm" placeholder="{{ 'videoSet.video.url' | translate }}" >
+						</div>
+						<div class="col-lg-3" ng-show="videoGroup.rightOption == 'B'">
+							<select name="next" ng-model="videoGroup.videos[1].nextSort" class="form-control input-sm">
+								<option value="">{{ 'videoSet.interaction.select' | translate }}</option>
+								<option value="1">1{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="2">2{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="3">3{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="4">4{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="5">5{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="6">6{{ 'videoSet.videoGroup' | translate }}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 多选项视频 -->
+				<div class="panel-body" ng-show="videoGroup.type == 'SELECT'">
+					<div class="form-group" ng-class="videoSetForm.name.$invalid && videoSetForm.name.$dirty ? 'has-error': ''">
+						<label class="control-label col-lg-3">{{$index}}:{{ 'videoSet.videoGroup' | translate }}:</label>
+						<div class="col-lg-6">
+							<input name="name" ng-model="videoGroup.image" type="text" class="form-control input-sm" placeholder="{{ 'videoSet.interaction.image' | translate }}" >
+						</div>
+						<div class="col-lg-3">
+							<button ng-click="addVideo(videoGroup)" class="btn btn-info btn-sm">
+								<i class="ion-plus m-right-xs"></i>{{ 'videoSet.video.add' | translate }}
+							</button>
+							<button ng-click="resetGroup(videoGroup)" class="btn btn-warning btn-sm">
+								<i class="ion-trash-a m-right-xs"></i>{{ 'videoSet.video.reset' | translate }}
+							</button>
+						</div>
+					</div>
+					
+					<div class="form-group" ng-repeat = "video in videoGroup.videos">
+						<label class="control-label col-lg-3">{{ 'videoSet.video.sub' | translate }}({{ letters[$index] }})</label>
+						<div class="col-lg-6">
+							<input name="name" ng-model="video.url" type="text" class="form-control input-sm" placeholder="{{ 'videoSet.video.url' | translate }}" >
+						</div>
+						<div class="col-lg-3">
+							<select ng-if="!videoSet.startWithImage" name="next" ng-model="video.nextSort" class="form-control input-sm">
+								<option value="">{{ 'videoSet.interaction.select' | translate }}</option>
+								<option value="1">1{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="2">2{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="3">3{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="4">4{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="5">5{{ 'videoSet.videoGroup' | translate }}</option>
+								<option value="6">6{{ 'videoSet.videoGroup' | translate }}</option>
+							</select>
+							
+							<select ng-if="videoSet.startWithImage" name="next" ng-model="video.nextSort" class="form-control input-sm" disabled="disabled">
+								<option value="">{{ 'videoSet.interaction.select.no' | translate }}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="text-right m-top-md">
+				<button ng-click="save(videoSet)" class="btn btn-success btn-sm" ng-disabled="videoSetForm.$invalid"><i class="fa fa-save m-right-xs"></i>{{ 'common.save' | translate }}</button>
+			</div>
+		</form>
+	</div>
+	</div>
+</div> 

@@ -1,0 +1,200 @@
+<div class="smart-widget widget-dark-blue margin-md">
+	<div class="smart-widget-header">{{ 'lesson.form.title' | translate }}</div>
+	<div class="smart-widget-inner">
+	<div class="smart-widget-body" >
+		<form name="lessonForm" class="form-horizontal no-margin" id="type-constraint" data-validate="parsley" novalidate>
+			
+			<div class="form-group" ng-class="lessonForm.moduleId.$invalid && lessonForm.moduleId.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.moduleId' | translate }}:</label>
+				<div class="col-lg-3">
+					<div>
+						<select name="moduleId" ng-model="lesson.moduleId" class="form-control input-sm" ng-options="module.value as module.name for module in modules" required></select>
+					</div>
+				</div>
+				
+				<label class="control-label col-lg-2">{{ 'videoSet.name' | translate }}:</label>
+				<div class="col-lg-3">
+					<div>
+						<select name="videoSetId" ng-model="lesson.videoSetId" class="form-control input-sm" ng-options="videoSet.value as videoSet.name for videoSet in videoSets" required></select>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="form-group"  ng-class="lessonForm.title.$invalid && lessonForm.title.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.title' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="title" ng-model="lesson.title" type="text" class="form-control input-sm" placeholder="{{ 'lesson.title' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="lessonForm.tag.$invalid && lessonForm.tag.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.tag' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="tag" ng-model="lesson.tag" type="text" class="form-control input-sm" placeholder="{{ 'lesson.tag.placeholder' | translate }}">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="lessonForm.cover.$invalid && lessonForm.cover.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.cover' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="cover" ng-model="lesson.cover" type="text" class="form-control input-sm" placeholder="{{ 'lesson.cover' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="lessonForm.graph.$invalid && lessonForm.desc.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.graph' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="graph" ng-model="lesson.graph" type="text" class="form-control input-sm" placeholder="{{ 'lesson.graph' | translate }}">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="lessonForm.ingredients.$invalid && lessonForm.desc.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.ingredients' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="ingredients" ng-model="lesson.ingredients" type="text" class="form-control input-sm" placeholder="{{ 'lesson.ingredients.placeholder' | translate }}" >
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-lg-3">{{ 'lesson.steps' | translate }}:</label>
+				<div class="col-lg-9">
+					<div ng-repeat="step in lesson.steps">
+						<div class="row" style="padding-top: 10px;">
+							<div class="col-lg-11">
+								<textarea ng-model="step.content" class="form-control input-sm" rows="3" cols="30" readonly="readonly" disabled="disabled"></textarea>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 10px;">
+							<div class="col-lg-10">
+								<input ng-model="step.image" type="text" class="form-control input-sm" readonly="readonly" disabled="disabled">
+							</div>
+							<div class="col-lg-2">
+								<button type="button" class="btn btn-danger input-sm" ng-click="removeStep(step)">
+									<i class="fa fa-times"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row" style="padding-top: 10px;">
+						<div class="col-lg-11">
+							<textarea ng-model="newStep.content" maxlength="200" class="form-control input-sm" rows="3" cols="30" placeholder="{{ 'lesson.steps.content' | translate }}"></textarea>
+						</div>
+					</div>
+					<div class="row" style="padding-top: 10px;">
+						<div class="col-lg-10">
+							<input ng-model="newStep.image" maxlength="100" type="text" class="form-control input-sm" placeholder="{{ 'lesson.steps.image' | translate }}">
+						</div>
+						<div class="col-lg-2">
+							<button type="button" class="btn btn-info input-sm" ng-click="addStep(newStep)">
+								<i class="fa fa-plus"></i>
+							</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="lessonForm.titleE.$invalid && lessonForm.titleE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.titleE' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="titleE" ng-model="lesson.titleE" type="text" class="form-control input-sm" placeholder="{{ 'lesson.titleE' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="lessonForm.tagE.$invalid && lessonForm.tagE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.tagE' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="tagE" ng-model="lesson.tagE" type="text" class="form-control input-sm" placeholder="{{ 'lesson.tagE' | translate }}">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="lessonForm.coverE.$invalid && lessonForm.coverE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.coverE' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="coverE" ng-model="lesson.coverE" type="text" class="form-control input-sm" placeholder="{{ 'lesson.coverE' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="lessonForm.graphE.$invalid && lessonForm.graphE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.graphE' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="graphE" ng-model="lesson.graphE" type="text" class="form-control input-sm" placeholder="{{ 'lesson.graphE' | translate }}" >
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="lessonForm.ingredientsE.$invalid && lessonForm.ingredientsE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.ingredientsE' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="ingredientsE" ng-model="lesson.ingredientsE" type="text" class="form-control input-sm" placeholder="{{ 'lesson.ingredientsE.placeholder' | translate }}" >
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-lg-3">{{ 'lesson.stepsE' | translate }}:</label>
+				<div class="col-lg-9">
+					<div ng-repeat="step in lesson.stepsE">
+						<div class="row" style="padding-top: 10px;">
+							<div class="col-lg-11">
+								<textarea ng-model="step.content" class="form-control input-sm" rows="3" cols="30" readonly="readonly" disabled="disabled"></textarea>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 10px;">
+							<div class="col-lg-10">
+								<input ng-model="step.image" type="text" class="form-control input-sm" readonly="readonly" disabled="disabled">
+							</div>
+							<div class="col-lg-2">
+								<button type="button" class="btn btn-danger input-sm" ng-click="removeStepE(step)">
+									<i class="fa fa-times"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row" style="padding-top: 10px;">
+						<div class="col-lg-11">
+							<textarea ng-model="newStepE.content" maxlength="200" class="form-control input-sm" rows="3" cols="30" placeholder="{{ 'lesson.steps.content' | translate }}"></textarea>
+						</div>
+					</div>
+					<div class="row" style="padding-top: 10px;">
+						<div class="col-lg-10">
+							<input ng-model="newStepE.image" maxlength="100" type="text" class="form-control input-sm" placeholder="{{ 'lesson.steps.image' | translate }}">
+						</div>
+						<div class="col-lg-2">
+							<button type="button" class="btn btn-info input-sm" ng-click="addStepE(newStepE)">
+								<i class="fa fa-plus"></i>
+							</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="form-group" ng-class="lessonForm.difficulty.$invalid && lessonForm.difficulty.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'lesson.difficulty' | translate }}:</label>
+				<div class="col-lg-3">
+					<div>
+						<select name="difficulty" ng-model="lesson.difficulty" class="form-control input-sm" required>
+							<option value="EASY">{{ 'lesson.difficulty.easy' | translate }}</option>
+							<option value="NORMAL">{{ 'lesson.difficulty.normal' | translate }}</option>
+							<option value="HARD">{{ 'lesson.difficulty.hard' | translate }}</option>
+						</select>
+					</div>
+				</div>
+				
+				<label class="control-label col-lg-1">{{ 'lesson.second' | translate }}:</label>
+				<div class="col-lg-3">
+					<div>
+						<input name="second" ng-model="lesson.second" type="number" ng-change="changeSecond()" class="form-control input-sm" placeholder="{{ 'lesson.second' | translate }}" required="required">
+					</div>
+				</div>
+			</div>
+			
+			<div class="text-right m-top-md">
+				<button ng-click="save(lesson)" class="btn btn-success btn-sm" ng-disabled="lessonForm.$invalid"><i class="fa fa-save m-right-xs"></i>{{ 'common.save' | translate }}</button>
+			</div>
+		</form>
+	</div>
+	</div>
+</div>

@@ -1,0 +1,200 @@
+
+<div class="padding-md">
+	<div class="row">
+		<div class="col-sm-10">
+			<div class="page-title">{{ 'firstPage.title' | translate }}</div>
+			<div class="page-sub-header">{{ 'firstPage.loginTime' | translate }}:{{stat.loginTime | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+		</div>
+		<div class="col-sm-2 text-right text-left-sm p-top-sm"></div>
+	</div>
+	
+	<h4 class="m-left-xs m-top-lg">{{ 'firstPage.title.today' | translate }}</h4>
+	
+	<div class="row m-top-md">
+		<div class="col-lg-3 col-sm-6">
+			<div class="statistic-box bg-danger m-bottom-md">
+				<div class="statistic-title">
+					{{ 'firstPage.user.new.all' | translate }}
+				</div>
+
+				<div class="statistic-value">
+					{{stat.newUser}}
+				</div>
+
+				<div class="m-top-md">{{ 'firstPage.user.chef' | translate }}&nbsp;{{stat.newUserChef}}&nbsp;&nbsp;{{ 'firstPage.user.trainee' | translate }}&nbsp;{{stat.newUserTrainee}}</div>
+
+				<div class="statistic-icon-background">
+					<i class="ion-eye"></i>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-sm-6">
+			<div class="statistic-box bg-info m-bottom-md">
+				<div class="statistic-title">
+					{{ 'firstPage.user.active.all' | translate }}
+				</div>
+
+				<div class="statistic-value">
+					{{stat.activeUser}}
+				</div>
+
+				<div class="m-top-md">{{ 'firstPage.user.chef' | translate }}&nbsp;{{stat.activeUserChef}}&nbsp;&nbsp;{{ 'firstPage.user.trainee' | translate }}&nbsp;{{stat.activeUserTrainee}}</div>
+
+				<div class="statistic-icon-background">
+					<i class="ion-ios7-cart-outline"></i>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-sm-6">
+			<div class="statistic-box bg-purple m-bottom-md">
+				<div class="statistic-title">
+					{{ 'firstPage.user.pay.all' | translate }}
+				</div>
+
+				<div class="statistic-value">
+					{{stat.payUser}}
+				</div>
+
+				<div class="m-top-md">
+					{{ 'firstPage.level.vip2' | translate }}&nbsp;{{stat.payUserVip2}}&nbsp;&nbsp;
+					{{ 'firstPage.level.vip3' | translate }}&nbsp;{{stat.payUserVip3}}&nbsp;&nbsp;
+					{{ 'firstPage.level.vip4' | translate }}&nbsp;{{stat.payUserVip4}}&nbsp;&nbsp;
+				</div>
+
+				<div class="statistic-icon-background">
+					<i class="ion-person-add"></i>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-sm-6">
+			<div class="statistic-box bg-success m-bottom-md">
+				<div class="statistic-title">
+					{{ 'firstPage.video.play.all' | translate }}
+				</div>
+
+				<div class="statistic-value">
+					{{stat.playToday}}&nbsp;
+				</div>
+
+				<div class="m-top-md">&nbsp;</div>
+
+				<div class="statistic-icon-background">
+					<i class="ion-stats-bars"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<h4 class="m-left-xs m-top-lg">{{ 'firstPage.title.week' | translate }}</h4>
+
+	<div class="row m-top-md">
+		<div class="col-lg-3 col-sm-6">
+			<div class="statistic-box bg-success m-bottom-md">
+				<div class="statistic-title">
+					{{ 'firstPage.week.play.avg' | translate }}
+				</div>
+
+				<div class="statistic-value">
+					{{stat.avgTimeWeek}}
+				</div>
+
+				<div class="statistic-icon-background">
+					<i class="ion-eye"></i>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-sm-6">
+			<div class="statistic-box bg-warning m-bottom-md">
+				<div class="statistic-title">
+					{{ 'firstPage.week.assign.avg' | translate }}
+				</div>
+
+				<div class="statistic-value">
+					{{stat.avgAssignWeek}}
+				</div>
+
+				<div class="statistic-icon-background">
+					<i class="ion-ios7-cart-outline"></i>
+				</div>
+			</div>
+		</div>
+
+		
+
+	</div>
+	
+	<h4 class="m-left-xs m-top-lg">{{ 'firstPage.title.total' | translate }}</h4>
+	
+	<div class="row m-top-md">
+		<div class="col-lg-3 col-sm-6">
+			<div class="statistic-box bg-danger m-bottom-md">
+				<div class="statistic-title">
+					{{ 'firstPage.user.all' | translate }}
+				</div>
+
+				<div class="statistic-value">
+					{{stat.allUser}}
+				</div>
+
+
+				<div class="statistic-icon-background">
+					<i class="ion-eye"></i>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-sm-6">
+			<div class="statistic-box bg-purple m-bottom-md">
+				<div class="statistic-title">
+					{{ 'firstPage.user.pay.total.all' | translate }}
+				</div>
+
+				<div class="statistic-value">
+					{{stat.allPayUser}}
+				</div>
+
+
+				<div class="statistic-icon-background">
+					<i class="ion-ios7-cart-outline"></i>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-sm-6">
+			<div class="statistic-box bg-success m-bottom-md">
+				<div class="statistic-title">
+					{{ 'firstPage.user.play.avg' | translate }}
+				</div>
+
+				<div class="statistic-value">
+					{{stat.avgPlayTotal}}
+				</div>
+
+
+				<div class="statistic-icon-background">
+					<i class="ion-person-add"></i>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-sm-6">
+			<div class="statistic-box bg-success m-bottom-md">
+				<div class="statistic-title">
+					{{ 'firstPage.video.play.total' | translate }}
+				</div>
+
+				<div class="statistic-value">
+					{{stat.countPlayTotal}}&nbsp;
+				</div>
+
+				<div class="statistic-icon-background">
+					<i class="ion-stats-bars"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,102 @@
+<div class="smart-widget widget-dark-blue">
+	<div class="smart-widget-header">{{ 'message.manage' | translate }}</div>
+	<div class="smart-widget-inner">
+		
+		<div style="padding: 20px;">
+			<div class="panel">
+				<div class="panel-body">
+					<div style="float:right; margin-top: 7px;">
+						<a href="javascript:" ng-click="isConditionCollapsed = !isConditionCollapsed" class="widget-remove-option"><i class="fa fa-times"></i></a>
+					</div>
+					<div>
+					<form class="form-inline no-margin" novalidate>
+						<div class="form-group">
+							<select name="userType" ng-model="condition.templateType" class="form-control input-sm" required>
+								<option value="" selected="selected">{{ 'meesage.type.all' | translate }}</option>
+								<option value="CUSTOM">{{ 'template.type.custom' | translate }}</option>
+								<option value="TEAM_APPLY">{{ 'template.type.team.apply' | translate }}</option>
+								<option value="TEAM_INVITE">{{ 'template.type.team.invite' | translate }}</option>
+								<option value="NEW_LESSON_ASSIGN">{{ 'template.type.new.lesson.assign' | translate }}</option>
+								<option value="TRAINEE_REGIST_SUCCESS">{{ 'template.type.trainee.regist.success' | translate }}</option>
+								<option value="CHEF_REGIST_SUCCESS">{{ 'template.type.chef.regist.success' | translate }}</option>
+							</select>
+							
+							<p class="input-group"
+								style="margin-bottom: 0px;">
+								<input type="text" 
+									uib-datepicker-popup name="createdTime"
+									ng-model="condition.createdTime" class="form-control input-sm"
+									is-open="popup1.opened" datepicker-options="dateOptions"
+									placeholder="{{ 'common.startTime' | translate }}"
+									clear-text="{{ 'common.date.clear' | translate }}"
+									close-text="{{ 'common.date.close' | translate }}"
+									current-text="{{ 'common.date.current' | translate }}"
+									on-open-focus="false" /> 
+								<span class="input-group-btn" style="padding-right: 10px;">
+									<button type="button" class="btn btn-default input-sm"
+										ng-click="open1()">
+										<i class="glyphicon glyphicon-calendar"></i>
+									</button>
+								</span>
+								<input type="text" 
+									uib-datepicker-popup name="createdTimeTo"
+									ng-model="condition.createdTimeTo" class="form-control input-sm"
+									is-open="popup2.opened" datepicker-options="dateOptions"
+									placeholder="{{ 'common.endTime' | translate }}"
+									clear-text="{{ 'common.date.clear' | translate }}"
+									close-text="{{ 'common.date.close' | translate }}"
+									current-text="{{ 'common.date.current' | translate }}"
+									on-open-focus="false" /> 
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default input-sm"
+										ng-click="open2()">
+										<i class="glyphicon glyphicon-calendar"></i>
+									</button>
+								</span>
+							</p>
+							&nbsp;&nbsp;
+						</div>
+						<button ng-click="query(condition)" class="btn btn-sm btn-success"><i class="fa fa-search m-right-xs"></i>{{ 'common.query' | translate }}</button>
+						<button ng-click="cleanCondition()" class="btn btn-sm btn-warning"><i class="ion-close m-right-xs"></i>{{ 'common.clean' | translate }}</button>
+					</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show="pageInfo.totalElements > 0">
+			<div class="smart-widget-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th width="100">{{ 'template.number' | translate }}</th>
+							<th width="100">{{ 'template.type' | translate }}</th>
+							<th width="100">{{ 'message.user' | translate }}</th>
+							<th>{{ 'message.content' | translate }}</th>
+							<th width="150">{{ 'message.createdTime' | translate }}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat = "message in messages">
+							<td>{{message.templateId}}</td>
+							<td>{{message.templateType | templateTypes | translate}}</td>
+							<td>{{message.user}}</td>
+							<td>{{message.letterContent}}</td>
+							<td>{{message.createdTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="margin-top: -30px; margin-left: 20px; margin-bottom: 20px;">
+				<uib-pagination total-items="pageInfo.totalElements" num-pages="pageInfo.totalPages" ng-model="pageInfo.page" max-size="pageInfo.maxSize" 
+					class="pagination-sm" boundary-links="true" force-ellipses="true" ng-change="changePage()" ng-disabled="pageInfo.totalElements <= 0" 
+					first-text="{{ 'common.page.first' | translate }}" last-text="{{ 'common.page.last' | translate }}" next-text="{{ 'common.page.next' | translate }}" previous-text="{{ 'common.page.previous' | translate }}"></uib-pagination>
+			</div>
+		</div>
+		<div class="smart-widget-body" ng-hide="pageInfo.totalElements > 0">
+			<div class="alert alert-warning alert-dismissible" role="alert">
+		     	<i class="fa fa-exclamation-circle m-right-xs"></i> <strong>{{ 'common.search.not.result' | translate }}</strong>
+		    </div>
+		</div>
+	</div>
+</div>

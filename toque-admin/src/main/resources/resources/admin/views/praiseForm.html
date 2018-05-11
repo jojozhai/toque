@@ -1,0 +1,28 @@
+<div class="smart-widget widget-dark-blue margin-md">
+	<div class="smart-widget-header">{{ 'category.form.title' | translate }}</div>
+	<div class="smart-widget-inner">
+	<div class="smart-widget-body" >
+		<form name="categoryForm" class="form-horizontal no-margin" id="type-constraint" data-validate="parsley" novalidate>
+			
+			
+			<div class="form-group"  ng-class="categoryForm.title.$invalid && categoryForm.title.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'category.title' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="title" ng-model="category.title" type="text" class="form-control input-sm" placeholder="{{ 'category.title' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group"  ng-class="categoryForm.titleE.$invalid && categoryForm.titleE.$dirty ? 'has-error': ''">
+				<label class="control-label col-lg-3">{{ 'category.titleE' | translate }}:</label>
+				<div class="col-lg-9">
+					<input name="titleE" ng-model="category.titleE" type="text" class="form-control input-sm" placeholder="{{ 'category.titleE' | translate }}" required="required">
+				</div>
+			</div>
+			
+			<div class="text-right m-top-md">
+				<button ng-click="save(category)" class="btn btn-success btn-sm" ng-disabled="categoryForm.$invalid"><i class="fa fa-save m-right-xs"></i>{{ 'common.save' | translate }}</button>
+			</div>
+		</form>
+	</div>
+	</div>
+</div>

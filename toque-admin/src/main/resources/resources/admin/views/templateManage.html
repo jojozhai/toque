@@ -1,0 +1,73 @@
+<div class="smart-widget widget-dark-blue">
+	<div class="smart-widget-header">{{ 'template.manage' | translate }}</div>
+	<div class="smart-widget-inner">
+		<div class="smart-widget-body">
+			<button ng-click="create()" class="btn btn-success btn-sm">
+				<i class="ion-plus m-right-xs"></i>{{ 'template.create' | translate }}
+			</button>
+			
+		</div>
+		
+		<div ng-show="pageInfo.totalElements > 0">
+			<div class="smart-widget-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th width="70">{{ 'template.number' | translate }}</th>
+							<th width="100">{{ 'template.type' | translate }}</th>
+							<th width="70">{{ 'template.scope' | translate }}</th>
+							<th width="70">{{ 'template.immediately' | translate }}</th>
+							<th width="150">{{ 'template.planSendTime' | translate }}</th>
+							<th>{{ 'template.content.chinese' | translate }}</th>
+							<th width="300">{{ 'template.content.english' | translate }}</th>
+							<th width="150">{{ 'common.operation' | translate }}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat = "template in templates">
+							<td>{{template.id}}</td>
+							<td>{{template.type | templateTypes | translate}}</td>
+							<td>{{template.scope | templateScopes | translate}}</td>
+							<td>{{template.immediately | templateImmediatelys | translate}}</td>
+							<td>{{template.planSendTime | date:'yyyy-MM-dd HH:mm'}}</td>
+							<td>{{template.letterContent}}</td>
+							<td>{{template.letterContentE}}</td>
+							<td>
+								<div ng-show="template.type == 'CUSTOM'">
+									<button class="btn btn-info btn-xs" ng-click="update(template)">
+										<i class="fa fa-bars m-right-xs"></i>{{ 'common.view' | translate }}
+									</button>
+									<button class="btn btn-danger btn-xs" ng-click="remove(template)">
+										<i class="ion-trash-a m-right-xs"></i>{{ 'common.delete' | translate }}
+									</button>
+								</div>
+								<div ng-show="template.type != 'CUSTOM'">
+									<div ng-show="template.enable + '' == 'false'">
+										<button class="btn btn-success btn-xs" ng-click="enable(template, true)">
+											<i class="fa fa-reply m-right-xs"></i>{{ 'common.enable' | translate }}
+										</button>
+									</div>
+									<div ng-show="template.enable + '' != 'false'">
+										<button class="btn btn-danger btn-xs" ng-click="enable(template, false)">
+											<i class="fa fa-times m-right-xs"></i>{{ 'common.disable' | translate }}
+										</button>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="margin-top: -30px; margin-left: 20px; margin-bottom: 20px;">
+				<uib-pagination total-items="pageInfo.totalElements" num-pages="pageInfo.totalPages" ng-model="pageInfo.page" max-size="pageInfo.maxSize" 
+					class="pagination-sm" boundary-links="true" force-ellipses="true" ng-change="changePage()" ng-disabled="pageInfo.totalElements <= 0" 
+					first-text="{{ 'common.page.first' | translate }}" last-text="{{ 'common.page.last' | translate }}" next-text="{{ 'common.page.next' | translate }}" previous-text="{{ 'common.page.previous' | translate }}"></uib-pagination>
+			</div>
+		</div>
+		<div class="smart-widget-body" ng-hide="pageInfo.totalElements > 0">
+			<div class="alert alert-warning alert-dismissible" role="alert">
+		     	<i class="fa fa-exclamation-circle m-right-xs"></i> <strong>{{ 'common.search.not.result' | translate }}</strong>
+		    </div>
+		</div>
+	</div>
+</div>
